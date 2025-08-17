@@ -1,7 +1,41 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // 👉 Put your three images in /public and use those paths:
-const WALLPAPERS = ["/public/7fedff9aab09413f30711c500e2b07ce.jpg", "/public/d0a44e04864daa008ee8a3803dd1abe4.jpg", "/public/375fff127fbc42ea2c95ad3118c779ba.jpg", "/public/3c6efe60e326157d72ff4ef31e7a789e.jpg", '/public/4d21575094429dacf4750b22cfaa99de.jpg', '/public/543d8b0302b4ffb7231227fbe4d58468.jpg', '/public/59270e918760cb811226e6901706643f.jpg', '/public/5c9579311801730d7c67e861136fe9cf.jpg', '/public/7fedff9aab09413f30711c500e2b07ce.jpg', '/public/_.jpeg', '/public/ab36f0eabb3979e104a122a7fa4330e0.jpg', '/public/af184a5bfc0ddffeaeecd9459eb0a1ac.jpg', '/public/b45381505ff89aa0d66179570fa13e2a.jpg', '/public/b45381505ff89aa0d66179570fa13e2a.jpg', '/public/b49026185e6892587b236a0da0feeb2a.jpg', '/public/be4345358b39fed4d88c8044c6ba4852.jpg', '/public/cb1b968312201131e0010d1a1565e04a.jpg', '/public/d0a44e04864daa008ee8a3803dd1abe4.jpg', '/public/d13556ec053cffc2410a682ee33436d6.jpg', '/public/d914b30f-9f46-4909-b636-4b26d4ec3646.jpeg', '/public/d9b9c6935ce4a5025e4fd5ac37b5c3bc.jpg', '/public/✰𝐘𝐄𝐀𝐆𝐄𝐑𝐍𝐗.jpeg', '/public/⚝•.jpeg', '/public/The closest known black hole to Earth is just….jpeg', '/public/ohtani.jpeg', '/public/howls moving castle.jpeg', '/public/home.jpg', '/public/home.jpeg', '/public/going merry.jpg', '/public/girl2.jpg', '/public/girl1.jpeg', '/public/girl.jpg', '/public/fb7fec8ebd2caf9a96d39e6a9d1acaae.jpg', '/public/deck.jpeg',]; 
+const WALLPAPERS = [
+                      "/7fedff9aab09413f30711c500e2b07ce.jpg", 
+                      "/d0a44e04864daa008ee8a3803dd1abe4.jpg", 
+                      "/375fff127fbc42ea2c95ad3118c779ba.jpg", 
+                      "/3c6efe60e326157d72ff4ef31e7a789e.jpg", 
+                      '/4d21575094429dacf4750b22cfaa99de.jpg', 
+                      '/543d8b0302b4ffb7231227fbe4d58468.jpg', 
+                      '/59270e918760cb811226e6901706643f.jpg', 
+                      '/5c9579311801730d7c67e861136fe9cf.jpg', 
+                      '/7fedff9aab09413f30711c500e2b07ce.jpg', 
+                      '/_.jpeg', 
+                      '/ab36f0eabb3979e104a122a7fa4330e0.jpg', 
+                      '/af184a5bfc0ddffeaeecd9459eb0a1ac.jpg', 
+                      '/b45381505ff89aa0d66179570fa13e2a.jpg', 
+                      '/b45381505ff89aa0d66179570fa13e2a.jpg', 
+                      '/b49026185e6892587b236a0da0feeb2a.jpg', 
+                      '/be4345358b39fed4d88c8044c6ba4852.jpg', 
+                      '/cb1b968312201131e0010d1a1565e04a.jpg', 
+                      '/d0a44e04864daa008ee8a3803dd1abe4.jpg', 
+                      '/d13556ec053cffc2410a682ee33436d6.jpg', 
+                      '/d914b30f-9f46-4909-b636-4b26d4ec3646.jpeg', 
+                      '/d9b9c6935ce4a5025e4fd5ac37b5c3bc.jpg', 
+                      '/✰𝐘𝐄𝐀𝐆𝐄𝐑𝐍𝐗.jpeg', 
+                      '/⚝•.jpeg', 
+                      '/The closest known black hole to Earth is just….jpeg', 
+                      '/ohtani.jpeg', 
+                      '/howls moving castle.jpeg', 
+                      '/home.jpg', 
+                      '/home.jpeg', 
+                      '/going merry.jpg', 
+                      '/girl2.jpg', 
+                      '/girl1.jpeg', 
+                      '/girl.jpg', 
+                      '/fb7fec8ebd2caf9a96d39e6a9d1acaae.jpg', 
+                      '/deck.jpeg',]; 
 // (e.g. copy your images as: public/wall1.jpg, public/wall2.jpg, public/wall3.jpg)
 
 function formatTime(sec) {
