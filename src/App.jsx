@@ -113,13 +113,13 @@ export default function App() {
       style={{
         minHeight: "100svh",
         display: "grid",
-        gridTemplateColumns: "1fr min(360px, 35%)",
+        gridTemplateColumns: "1fr min(360px, 100%)",
       }}
     >
       <div style={{
               position: "fixed",      // keep it pinned
               top: "1rem",            // spacing from top
-              left: "40%",            // center horizontally
+              left: "50%",            // center horizontally
               transform: "translateX(-50%)",
               opacity: 0.9,
               fontSize: "2rem",       // roughly h2 size
@@ -128,18 +128,20 @@ export default function App() {
               color: "whitesmoke"
            }}
       >
-  Time to focus.
+  FOCUS
 </div>
       {/* LEFT: Timer with wallpaper */}
       <div
         style={{
           position: "relative",
           backgroundImage: `url(${WALLPAPERS[wallIndex]})`,
+          width: "100vw",
+          height: '100vh', 
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",
           placeItems: "center",
-          padding: "2rem",
+          padding: "0rem",
         }}
       >
         <div
@@ -154,11 +156,13 @@ export default function App() {
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
+            placeItems: "center",
             boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
             padding: "2rem",   // inside spacing
+            overflow: "hidden", 
           }}
         >
-          <div style={{ fontSize: "clamp(3rem, 13vw, 9rem)", fontWeight: 800, letterSpacing: 1, paddingTop: "9rem", }}>
+          <div style={{ fontSize: "clamp(3rem, 13vw, 9rem)", fontWeight: 800, letterSpacing: 1, }}>
             {formatTime(seconds)}
           </div>
           
@@ -176,47 +180,21 @@ export default function App() {
             </button>
           </div>
         
+       
+          
 
           
         </div>
-          <div style={{ position: "fixed",         // fixes it to the viewport
-                        bottom: "4rem",            // distance from bottom
-                        left: "40%",               // center horizontally
-                        transform: "translateX(-50%)", // actually center it
-                        display: "flex",
-                        gap: ".5rem",
-                        justifyContent: "center",
-                        zIndex: 1000,     
-                      }}>
-            <button onClick={prevWallpaper} style={chipStyle}>
-              ◀︎ Wallpaper
-            </button>
-            <button onClick={nextWallpaper} style={chipStyle}>
-              Wallpaper ▶︎
-            </button>
-          </div>
 
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.35) 100%)",
-            pointerEvents: "none",
-          }}
-        />
-      </div>
-
-
-      {/* RIGHT: Log panel */}
-      <aside
-        style={{
-          background: "#0f172a", // slate-900
-          color: "white",
-          padding: "1.25rem",
-          overflowY: "auto",
-        }}
-      >
+        <div style={{ position: "fixed",
+            bottom: "7rem",   // a little above the wallpaper buttons at 4rem
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 1000,
+            color: "white",
+            fontSize: "1rem",
+            padding: ".5rem 1rem",
+            }}>
         <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: ".75rem" }}>
           Focus Log
         </h2>
@@ -226,10 +204,8 @@ export default function App() {
           <b>{formatTime(totalSeconds)}</b>
         </div>
 
-        {logs.length === 0 ? (
-          <p style={{ opacity: 0.8 }}>No sessions yet. Press “Log / Save & Restart”.</p>
-        ) : (
-          <ul style={{ display: "grid", gap: ".5rem", listStyle: "none", padding: 0 }}>
+        {
+           <ul style={{ display: "grid", gap: ".5rem", listStyle: "none", padding: 0 }}>
             {logs.map((l, i) => (
               <li
                 key={l.id}
@@ -257,7 +233,7 @@ export default function App() {
               </li>
             ))}
           </ul>
-        )}
+        }
 
         {logs.length > 0 && (
           <button
@@ -267,7 +243,37 @@ export default function App() {
             Clear Log
           </button>
         )}
-      </aside>
+        </div>
+          <div style={{ position: "fixed",         // fixes it to the viewport
+                        bottom: "4rem",            // distance from bottom
+                        left: "50%",               // center horizontally
+                        transform: "translateX(-50%)", // actually center it
+                        display: "flex",
+                        gap: ".5rem",
+                        justifyContent: "center",
+                        zIndex: 1000,     
+                      }}>
+            <button onClick={prevWallpaper} style={chipStyle}>
+              ◀︎ Wallpaper
+            </button>
+            <button onClick={nextWallpaper} style={chipStyle}>
+              Wallpaper ▶︎
+            </button>
+          </div>
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.35) 100%)",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
+
+
+      
     </div>
   );
 }
