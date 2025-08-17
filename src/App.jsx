@@ -144,8 +144,8 @@ export default function App() {
       >
         <div
           style={{
-            backdropFilter: "blur(.1px) saturate(2)",
-            background: "rgba(0,0,0,0.35)",
+            backdropFilter: "blur(1px) saturate(1.2)",
+            background: "rgba(33, 27, 27, 0.1)",
             color: "white",
             borderRadius: "50%",
             width: "40vmin",   // scales with viewport
